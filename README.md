@@ -1,5 +1,5 @@
 # BuildTools [![Build Status](https://travis-ci.org/TorchPowered/BuildTools.svg?branch=master)](https://travis-ci.org/TorchPowered/BuildTools)
-A tool application to building Torch stable builds easily and effectively.
+A tool application to building Torch builds easily and effectively.
 
 ## Building
 BuildTools can be built manually using Gradle to recieve a JAR file.
