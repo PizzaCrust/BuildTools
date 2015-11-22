@@ -16,3 +16,11 @@ To build the project, do either these steps depending on your platform on the di
 **Windows:**  ```gradlew assemble```
 **Linux and Mac OS X:**  ```./gradlew assemble```
 There will be a build folder where the libs folder will contain the JAR file from the build.
+
+### Issues
+If you're building the project and running the JAR file from the build and get a SecurityException,
+try this:
+1. Open the JAR file with a archive manager
+2. Remove everything from META-INF except MANIFEST.MF
+
+That is because of shading from Gradle to input all the dependencies inside one JAR.
