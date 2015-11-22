@@ -1,2 +1,3 @@
 # BuildTools
-A application that allows easy building of Torch.
+  
+A tool application to building Torch stable builds easily and effectively.  
