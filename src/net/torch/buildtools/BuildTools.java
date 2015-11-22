@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 
 /**
  * The main class of the application
+ * @author PizzaCrust
  */
 public class BuildTools {
     public static void main(String[] args){
