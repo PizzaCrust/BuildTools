@@ -24,3 +24,8 @@ try this:
 2. Remove everything from META-INF except MANIFEST.MF
 
 That is because of shading from Gradle to input all the dependencies inside one JAR.
+
+## Running
+To run BuildTools, make sure you are in a command line environment and do these commands in the directory of the BuildTools.jar.
+**Stable Branch:** ```java -jar BuildTools.jar -stable ```
+**Development Branch:** ```java -jar BuildTools.jar -latest```
