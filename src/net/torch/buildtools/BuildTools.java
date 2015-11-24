@@ -52,7 +52,7 @@ public class BuildTools {
             }
             if(!isUnix){
                 try {
-                    Runtime.getRuntime().exec("cmd.exe /c cd " + '"' + endDir.getAbsolutePath() + '"' + " && gradlew build");
+                    Runtime.getRuntime().exec("cmd.exe /c cd " + '"' + endDir.getAbsolutePath() + '"' + " && gradlew assemble");
                 } catch (IOException e) {
                     logger.severe("Building repository failed!");
                     e.printStackTrace();
@@ -60,7 +60,7 @@ public class BuildTools {
                 }
             }else{
                 try {
-                    Runtime.getRuntime().exec("cd " + endDir.getAbsolutePath() + " && " + "./gradlew build");
+                    Runtime.getRuntime().exec("cd " + endDir.getAbsolutePath() + " && " + "./gradlew assemble");
                 } catch (IOException e) {
                     logger.severe("Building repository failed!");
                     e.printStackTrace();
