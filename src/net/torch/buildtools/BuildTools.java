@@ -2,6 +2,8 @@ package net.torch.buildtools;
 
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
+import org.gradle.tooling.GradleConnector;
+import org.gradle.tooling.ProjectConnection;
 
 import java.io.File;
 import java.io.IOException;
@@ -42,32 +44,10 @@ public class BuildTools {
                 return;
             }
             logger.info("Torch repository cloned! Building repository!");
-            logger.info("Checking for operating system to insure build compatiblity...");
-            String operatingSystem = System.getProperty("os.name").toLowerCase();
-            boolean isUnix = false;
-            if(operatingSystem.contains("win")){
-                isUnix = false;
-            }else{
-                isUnix = true;
-            }
-            if(!isUnix){
-                try {
-                    Runtime.getRuntime().exec("cmd.exe /c cd " + '"' + endDir.getAbsolutePath() + '"' + " && gradlew assemble");
-                } catch (IOException e) {
-                    logger.severe("Building repository failed!");
-                    e.printStackTrace();
-                    return;
-                }
-            }else{
-                try {
-                    Runtime.getRuntime().exec("cd " + endDir.getAbsolutePath() + " && " + "./gradlew assemble");
-                } catch (IOException e) {
-                    logger.severe("Building repository failed!");
-                    e.printStackTrace();
-                    return;
-                }
-            }
+            ProjectConnection projectConnection = GradleConnector.newConnector().forProjectDirectory(endDir).connect();
+            projectConnection.newBuild().forTasks("assemble").run();
             logger.info("BuildTools finished with JAR file inside of builds/build/lib");
+            System.exit(0);
             return;
         }
         if(args[0].equalsIgnoreCase("-stable")){
@@ -87,32 +67,10 @@ public class BuildTools {
                 return;
             }
             logger.info("Torch repository cloned! Building repository!");
-            logger.info("Checking for operating system to insure build compatiblity...");
-            String operatingSystem = System.getProperty("os.name").toLowerCase();
-            boolean isUnix = false;
-            if(operatingSystem.contains("win")){
-                isUnix = false;
-            }else{
-                isUnix = true;
-            }
-            if(!isUnix){
-                try {
-                    Runtime.getRuntime().exec("cmd.exe /c cd " + '"' + endDir.getAbsolutePath() + '"' + " && gradlew build");
-                } catch (IOException e) {
-                    logger.severe("Building repository failed!");
-                    e.printStackTrace();
-                    return;
-                }
-            }else{
-                try {
-                    Runtime.getRuntime().exec("cd " + endDir.getAbsolutePath() + " && " + "./gradlew build");
-                } catch (IOException e) {
-                    logger.severe("Building repository failed!");
-                    e.printStackTrace();
-                    return;
-                }
-            }
+            ProjectConnection projectConnection = GradleConnector.newConnector().forProjectDirectory(endDir).connect();
+            projectConnection.newBuild().forTasks("assemble").run();
             logger.info("BuildTools finished with JAR file inside of builds/build/lib");
+            System.exit(0);
             return;
         }
         logger.severe("Sorry, something went wrong.");

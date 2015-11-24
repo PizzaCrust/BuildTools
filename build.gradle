@@ -9,6 +9,9 @@ sourceCompatibility = 1.5
 
 repositories {
     mavenCentral()
+    maven{
+        url 'http://repo.gradle.org/gradle/libs-releases-local'
+    }
 }
 
 jar {
@@ -27,5 +30,6 @@ jar {
 
 dependencies {
     compile "org.eclipse.jgit:org.eclipse.jgit:4.1.1.201511131810-r"
+    compile "org.gradle:gradle-tooling-api:2.9"
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
