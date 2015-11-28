@@ -61,7 +61,7 @@ public class BuildTools {
             endDir.mkdir();
             String repositoryLink = "https://github.com/TorchPowered/Torch.git";
             try {
-                Git.cloneRepository().setURI(repositoryLink).setDirectory(endDir).call().checkout().setName("04ca95a").call();
+                Git.cloneRepository().setURI(repositoryLink).setDirectory(endDir).call().checkout().setName("c55beb6").call();
             } catch (GitAPIException e) {
                 logger.severe("Could not clone Torch repository!");
                 return;
